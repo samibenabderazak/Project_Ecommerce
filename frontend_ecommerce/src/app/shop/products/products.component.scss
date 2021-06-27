@@ -1,0 +1,99 @@
+
+.products-container{
+    background: #f8f9fa !important;
+    padding: 1em 0;
+    position: relative;
+    display: flex;
+    padding: 0px 2%;
+}
+.sidebar{
+    flex: 1;
+    margin-top: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.title-category {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.title-category:hover {
+    color: rgb(88, 88, 88);
+}
+
+.list-item-category {
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.list-item-category.active,
+.list-item-category:hover {
+    color: rgb(43, 43, 43);
+    font-weight: 600;
+}
+
+.sidebar  .list {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+.sidebar .list .list-items{
+    font-size: 10px;
+    background: transparent;
+}
+
+.filters mat-slider {
+    margin: 34px 0 52px 0;
+}
+
+.mat-slider-wrapper .mat-slider-thumb-label {
+    padding: 6px !important;
+}
+
+.body{
+    flex: 6;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.body .productImg {
+    padding: 18px;
+    width: 100%;
+    height: 200px;
+}
+
+pagination-controls {
+    ::ng-deep {
+      ul {
+        margin-top: 20px;
+        margin-left: 50%;
+        transform: translateX(-28%);
+      }
+    }
+}
+
+.thumbnail-image img {
+    object-fit: cover;
+    object-position: top;
+    margin-left: 10px;
+}
+
+@media (max-width: 1080px) {
+    .products-container {
+        display: none;
+    }
+    .mobile {
+        display: block;
+        background: #fff;
+        margin: 10px 0px;
+        padding: 10px;
+    }
+    
+}
+
+

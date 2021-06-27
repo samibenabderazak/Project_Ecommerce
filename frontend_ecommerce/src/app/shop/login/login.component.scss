@@ -1,0 +1,17 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+  
+.example-container > * {
+  width: 100%;
+}
+
+mat-form-field {
+  margin: 0px;
+}
+
+.mat-dialog-container {
+  padding: 5px;
+}

@@ -1,0 +1,46 @@
+<h3>Personal Information</h3>
+<form [formGroup]="profileForm">
+    <div class="form-box">
+        <mat-form-field appearance="outline">
+            <mat-label>Full name</mat-label>
+            <input matInput formControlName="fullname" placeholder="Placeholder" >
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="lastName">
+            <mat-label>Date Creation</mat-label>
+            <input matInput value='{{user.createDate}}' placeholder="Placeholder" disabled>
+        </mat-form-field>
+    </div>
+
+    <div class="form-box">
+        <mat-form-field appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber" placeholder="Placeholder" >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" placeholder="Placeholder" >
+        </mat-form-field>
+    </div>
+
+    <div class="form-box" style="margin-top:20px;">
+        <button mat-button mat-raised-button color="primary" 
+        class="buy-now-button" (click)="saveUser(user)">
+            Save
+        </button>
+    </div>
+</form>
+<div style="margin-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.05);">
+    <h3>FAQs</h3>
+    <p><b>question mta3 faq question mta3 faq question mta3 faq question mta3 faq?</b></p>
+    <p>reponse all question faq reponse aal question faq.
+    </p>
+    <p><b>question mta3 faq question mta3 faq question mta3 faq question mta3 faq?</b></p>
+    <p> reponse all question faq reponse aal question faq.</p>
+
+    <p><b> question mta3 faq question mta3 faq question mta3 faq question mta3 faq?</b>
+    </p>
+    <p> reponse all question faq reponse aal question faq.</p>
+
+    <p><b>question mta3 faq question mta3 faq question mta3 faq question mta3 faq?</b></p>
+    <p> reponse all question faq reponse aal question faq.</p>
+</div>

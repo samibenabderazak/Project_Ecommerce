@@ -1,0 +1,123 @@
+<div class="shopping-cart-conatiner">
+
+    <div class="title">
+        The Order
+    </div>
+    <div class="header">
+
+
+        <div class="img">
+
+        </div>
+        <div class="name">
+            Product
+        </div>
+        <div class="price">
+            Price
+        </div>
+        <div class="quantity">
+            Amount
+        </div>
+        <div class="total">
+           Total
+        </div>
+        <div class="close">
+
+        </div>
+    </div>
+
+    <div class="body" *ngFor="let item of orders">
+
+        <div class="img" (click)="goToProductDetails(item.productDTO.id)">
+
+            <img class="productImg" [src]=getPathImage(item.productDTO.image) alt="Photo of a Shiba Inu">
+        </div>
+        <div class="name" (click)="goToProductDetails(item.productDTO.id)">
+            <h5>{{item.productDTO.name}}</h5>
+            <p class="description" [innerHTML]= "item.productDTO.description"></p>
+        </div>
+        <div class="price">
+            {{item.productDTO.price | currency: "TND"}}
+        </div>
+        <div class="quantity">
+            <mat-icon class="close-icon">add</mat-icon><input
+                style="height: 20px; margin-right: 5px; text-align: center;" type="text" size="1" value="{{item.quantity}}" />
+            <mat-icon class="close-icon">remove</mat-icon>
+        </div>
+        <div class="total">
+            {{item.price}}
+        </div>
+        <div class="close">
+            <mat-icon class="close-icon" (click)="removeProductOrder(item.id)">close</mat-icon>
+        </div>
+
+    </div>
+
+    <div class="bottom-content">
+
+        <div class="order-information" *ngIf="calculateOrder!= null">
+            <form [formGroup]="notifyForm"> 
+                <div class="example-container">
+                  <span class="title-order" style="font-weight: bold; text-align: center;">order information</span>
+                
+                  <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="nameUser"  placeholder="Username" required>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput formControlName="phoneNumber"  placeholder="Số điện thoại" required>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address" placeholder="Địa chỉ" required>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline">
+                    <mat-label>Order Date</mat-label>
+                    <input matInput value='{{calculateOrder.orderDate}}' placeholder="Ngày đặt hàng" disabled>
+                  </mat-form-field>
+    
+                </div>
+              </form>
+        </div>
+    
+        <div class="cart-total" *ngIf="calculateOrder != null">
+            <h3 style="font-weight: bold; text-align: center;">Bill</h3>
+            <hr>
+            <table style="width: 100%">
+                <tr>
+                    <td>Order cost</td>
+                    <td>{{calculateOrder.totalprice}}</td>
+                </tr>
+                <tr>
+                    <td>Shipping Fee</td>
+                    <td>{{shipFee}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                        
+                    <td>Total order cost</td>
+                    <td><b>{{calculateOrder.totalprice + shipFee | currency: "TND"}} </b></td>
+                </tr>
+            </table>
+            <div class="checkout-button">
+                <button mat-stroked-button color="primary" class="button full-button"
+                (click)= "payment()" >
+                    Pay
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="empty" *ngIf="!orders">
+    <h2>You have not selected any products!</h2>
+</div>

@@ -1,0 +1,82 @@
+<h2 *ngIf="action === 'edit'" class="title-action">Edit users in the system</h2>
+<h2 *ngIf="action === 'add'" class="title-action">Add new users in the system</h2>
+<form [formGroup]="profileForm" class="form-actions">
+    <div class="row">
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" placeholder="Enter Your Username" required>
+            </mat-form-field>
+        </div>
+        
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password" placeholder="Enter Your password">
+            </mat-form-field>
+        </div>
+    
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="fullname" placeholder="Enter Your Full name" required>
+            </mat-form-field>
+        </div>
+    
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label> phone number</mat-label>
+                <input matInput formControlName="phoneNumber" placeholder="Enter Your phoneNumber" required>
+            </mat-form-field>
+        </div>
+    
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address" placeholder="Enter Your Address" required>
+            </mat-form-field>
+        </div>
+    
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline" *ngIf="action === 'edit'">
+                <mat-label>Date created</mat-label>
+                <input matInput value="{{user.createDate}}" disabled>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="role-selecte row w-100">
+        <mat-selection-list #listRole (click)="onCheckboxClick($event, listRole)">
+            <mat-list-option *ngFor="let role of roles" [value]="role.name" [selected]="role.checkbox">
+              {{role.name}}
+            </mat-list-option>
+        </mat-selection-list>
+        <p class="col-6">
+            Number of options: {{listRole.selectedOptions.selected.length}}
+        </p>
+    </div>
+      
+    <div class="btn-group row">
+        <button mat-button mat-raised-button color="primary" 
+            class="save"
+            (click)="update()"
+            *ngIf= "action === 'edit'"
+            [disabled]="!profileForm.valid">
+            Save
+        </button>
+    
+        <button mat-button mat-raised-button color="primary" 
+            class="save"
+            (click)="update()"
+            *ngIf= "action === 'add'"
+            [disabled]="!profileForm.valid">
+            Save
+        </button>
+    
+        <button mat-button mat-stroked-button color="primary" class="button"
+        (click)="closeDialog()">
+        Cancel
+        </button>
+    </div>
+</form>
+

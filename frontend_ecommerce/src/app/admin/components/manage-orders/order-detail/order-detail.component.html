@@ -1,0 +1,115 @@
+<div class="shopping-cart-conatiner">
+
+    <div class="title">
+        The order
+    </div>
+    <div class="header">
+
+
+        <div class="img">
+
+        </div>
+        <div class="name">
+            Product
+        </div>
+        <div class="price">
+           Price
+        </div>
+        <div class="quantity">
+            Amount
+        </div>
+        <div class="total">
+           Total
+        </div>
+        <div class="close">
+
+        </div>
+    </div>
+
+    <div class="body" *ngFor="let item of productOrders">
+
+        <div class="img" (click)="goToProductDetails(item.productDTO.id)">
+
+            <img class="productImg" [src]=getPathImage(item.productDTO.image) alt="Photo of a Shiba Inu">
+        </div>
+        <div class="name" (click)="goToProductDetails(item.productDTO.id)">
+            <h5>{{item.productDTO.name}}</h5>
+            <p class="description" [innerHTML]= "item.productDTO.description"></p>
+        </div>
+        <div class="price">
+            {{item.productDTO.price | currency: "TND"}}
+        </div>
+        <div class="quantity">
+            <input style="height: 20px; margin-right: 5px; text-align: center;" 
+            type="text" size="1" value="{{item.quantity}}" disabled/>
+        </div>
+        <div class="total">
+            {{item.price | currency: "TND"}}
+        </div>
+
+    </div>
+
+    <div class="bottom-content">
+
+        <div class="order-information">
+            <form> 
+                <div class="example-container">
+                  <span class="title-order" style="font-weight: bold; text-align: center;">Order Information</span>
+                
+                  <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput value = '{{order.nameUser}}' placeholder="Username" disabled>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline">
+                    <mat-label>phone number</mat-label>
+                    <input matInput value = '{{order.phoneNumber}}' placeholder="phone number" disabled>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input matInput value = '{{order.address}}' placeholder="Address" disabled>
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline">
+                    <mat-label>Order date</mat-label>
+                    <input matInput value='{{order.orderDate}}' placeholder="Order date" disabled>
+                  </mat-form-field>
+    
+                </div>
+              </form>
+        </div>
+    
+        <div class="cart-total">
+            <h3 style="font-weight: bold; text-align: center;">Bill</h3>
+            <hr>
+            <table style="width: 100%">
+                <tr>
+                    <td>Order Cost</td>
+                    <td>{{order.totalprice}}</td>
+                </tr>
+                <tr>
+                    <td>Shipping Fee</td>
+                    <td>{{shipFee}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                        
+                    <td>Total order cost</td>
+                    <td><b>{{order.totalprice + shipFee | currency: "TND"}} </b></td>
+                </tr>
+            </table>
+            <div class="checkout-button">
+                <button mat-stroked-button color="primary" class="button full-button" [disabled]= true >
+                    Pay
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

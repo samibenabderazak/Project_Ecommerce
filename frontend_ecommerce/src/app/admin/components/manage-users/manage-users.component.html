@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <h2 style="font-family: 'Anton', sans-serif" class="text-center">
+        Users in the system
+      </h2>
+    </div>
+    <button mat-raised-button color="primary" (click)="add('add')">Add new</button>
+    <table *ngIf="users" class="table table-striped ">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Num</th>
+        <th scope="col">ID</th>
+        <th scope="col">Username</th>
+        <th scope="col">Name</th>
+        <th scope="col">Tel</th>
+        <th scope="col">Address</th>
+        <th scope="col">Date created</th>
+        <th scope="col">Role</th>
+        <th scope="col">Manipulation</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users |  paginate: { 
+                                                    id: 'users-pagination',
+                                                    itemsPerPage: pageSize,
+                                                    currentPage: page,
+                                                    totalItems: totalUsers 
+                                                } ; let i = index;">
+            <td scope="row">{{i + 1}}</td>
+            <td>
+                <p class="lead">{{u.id}}</p>
+            </td>
+            <td>
+                <p class="lead">{{u.username}}</p>
+            </td>
+            <td>
+                <p class="lead">{{u.fullname}}</p>
+            </td>
+            <td>
+                <p class="lead">{{u.phoneNumber}}</p>
+            </td>
+            <td>
+                <p class="lead">{{u.address}}</p>
+            </td>
+            <td>
+                <p class="lead">{{u.createDate}}</p>
+            </td>
+            <td>
+                <div *ngFor= "let role of u.roles">
+                    <p class="lead">{{role}} </p>
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-info" (click)="edit(u, 'edit')">
+                    Edit
+                </button>
+                <button mat-raised-button color="warn" (click) = "delete(u, 'delete')">
+                    Delete
+                </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+</div>
+
+
+<pagination-controls *ngIf="paginationIsDisplay"
+ class="user-pagination"
+ id="users-pagination"
+ previousLabel="Prev"
+ nextLabel="Next"
+ directionLinks:boolean="true"
+ autoHide:boolean="true"
+ responsive:boolean="true"
+ (pageChange)="handlePageChange($event)">
+</pagination-controls>

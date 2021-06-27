@@ -1,0 +1,73 @@
+<h2 *ngIf="action === 'edit'" class="title-action">Edit order</h2>
+<form [formGroup]="orderForm" class="form-actions">
+    <div class="row">
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>ID User</mat-label>
+                <input matInput formControlName="idUser">
+            </mat-form-field>
+        </div>
+        
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Recipient's name</mat-label>
+                <input matInput formControlName="nameUser">
+            </mat-form-field>
+        </div>
+    
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Phone number</mat-label>
+                <input matInput formControlName="phoneNumber" type="number">
+            </mat-form-field>
+        </div>
+    
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address">
+            </mat-form-field>
+        </div>
+    
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Order Date</mat-label>
+                <input matInput formControlName="orderDate">
+            </mat-form-field>
+        </div>
+
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Total Payment</mat-label>
+                <input matInput formControlName="totalprice">
+            </mat-form-field>
+        </div>
+
+        <div class="col-6">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Order Status</mat-label>
+                <mat-select formControlName="status" (selectionChange)="changeStatus($event)">
+                    <mat-option *ngFor="let o of status" [value]="o.value">
+                      {{o.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+      
+    <div class="btn-group row">
+        <button mat-button mat-raised-button color="primary" 
+            class="save"
+            (click)="update()"
+            *ngIf= "action === 'edit'"
+            [disabled]="!orderForm.valid">
+            Save
+        </button>
+    
+        <button mat-button mat-stroked-button color="primary" class="button"
+        (click)="closeDialog()">
+            Cancel
+        </button>
+    </div>
+</form>
+

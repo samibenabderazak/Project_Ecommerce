@@ -1,0 +1,69 @@
+
+<form [formGroup]="loginForm" *ngIf="!checkSignUp"> 
+  <div class="example-container">
+    <h2 style="font-weight: 100; text-align: center;">Please sign in</h2>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" placeholder="Enter Your Username" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" required>
+    </mat-form-field>
+    <button mat-button mat-raised-button color="primary" 
+      class="buy-now-button space"
+      [disabled]="!loginForm.valid"
+      (click)="login()">
+      LOGIN
+    </button>
+
+  
+    <label style="text-align: center; margin-top: 5px; color:gray">Or</label>
+    <button mat-button mat-stroked-button color="primary" class="button"
+    (click)="goToSignUp()">
+      SIGNUP NOW
+    </button>
+  </div>
+</form>
+
+
+<form [formGroup]="signUpForm" *ngIf="checkSignUp"> 
+  <div class="example-container">
+    <h2 style="font-weight: 100; text-align: center;">Please sign up</h2>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" placeholder="Enter Your Username" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName="fullname" placeholder="Enter Your Full name" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" placeholder="Enter Your phoneNumber" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" placeholder="Enter Your Address" required>
+    </mat-form-field>
+
+    <button mat-button mat-raised-button color="primary" 
+      class="buy-now-button space"
+      [disabled]="!signUpForm.valid"
+      (click)="signUp()">
+      Register
+    </button>
+  
+    <label style="text-align: center; margin-top: 5px; color:gray">Or</label>
+    <button mat-button mat-stroked-button color="primary" class="button"
+    (click)="goToLogin()">
+      Back to Login
+    </button>
+  </div>
+</form>

@@ -1,0 +1,51 @@
+<div class="profile-container">
+    <div class="sidebar">
+        <div class="profile">
+            <table>
+                <tr>
+                    <td>
+                        <img src="https://img1a.flixcart.com/www/linchpin/fk-cp-zion/img/profile-pic-male_2fd3e8.svg">
+
+                    </td>
+                    <td style="padding-left: 15px;">
+                        <span>Asslema,</span>
+                        <h3 style="margin: 0">{{user.username}}</h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="settings">
+         
+            <div class="list">
+
+                <div class="left-icon contain">
+                    <mat-icon>person</mat-icon>
+                </div> 
+                <div class="title contain">
+                    ACCOUNT SETTINGS
+                </div>
+                <div class="right-icon contain">
+                    <mat-icon>chevron_right</mat-icon>
+                </div>
+     
+            </div>
+            
+
+          
+            <div class="list">
+                <div class="left-icon contain">
+                    <mat-icon>power_settings_new</mat-icon>
+                </div>
+                <div class="title contain" (click)="logout()">
+                    LOGOUT
+                </div>
+                <div class="right-icon contain">
+                    <mat-icon>chevron_right</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+
+<mat-progress-bar mode="indeterminate" *ngIf="loadingEnable"></mat-progress-bar>
+<div class="header-box">
+    <div class="container">
+        <div class="mobile-view">
+            <mat-icon (click)="toggelSidenav()">menu</mat-icon>
+        </div>
+        <div class="logo">
+            <a [routerLink]="['/home']"> <img
+                    src="../../../../assets/images/logo.png"
+                    width="80px" height="50px">
+            </a>
+        </div>
+
+
+
+        <div class="menu">
+            <ul class="list">
+                <li class="contain" [routerLink]="['/home']" routerLinkActive="active"><span>HOME</span></li>
+                <li class="contain" [routerLink]="['/products']" routerLinkActive="active"><span>PRODUCTS</span></li>
+   
+                <li class="contain" *ngIf="!userCurrent">
+                    <button mat-stroked-button color="primary" class="button-login" (click)="openLoginDialog()">LOGIN</button>
+                </li>
+
+                <li class="contain profile dropdown" *ngIf="userCurrent">
+                    <img src="https://img1a.flixcart.com/www/linchpin/fk-cp-zion/img/profile-pic-male_2fd3e8.svg"
+                        width="25px">
+
+                    <div class="dropdown-content">
+                        <a (click)="openProfile()">My Profile</a>
+                        <a (click)="openOrder()">Orders</a>
+                      
+                        <a (click)="logout()">Logout</a>
+                    </div>
+                </li>
+                <li class="contain" *ngIf="userCurrent" [routerLink]="['shopping-cart/+ userCurrent.id']" routerLinkActive="active">
+                    <mat-icon class="icon">add_shopping_cart</mat-icon>
+                </li>
+               
+                <li class="contain" [routerLink]="['/admin/user']" routerLinkActive="active" *ngIf="isAdmin">
+                    <span>MANAGE-USER</span>
+                </li>
+                <li class="contain" [routerLink]="['/admin/product']" routerLinkActive="active" *ngIf="isAdmin">
+                    <span>MANAGE-PRODUCT</span>
+                </li>
+            </ul>
+        </div>
+        <div class="cart-icon mobile-view" *ngIf="!userCurrent">
+            <button mat-stroked-button color="primary" class="button-login" (click)="openLoginDialog()">LOGIN</button>
+        </div>
+        <div class="cart-icon mobile-view" *ngIf="userCurrent" >
+            <a [routerLink]="['/myprofile/notifications']">
+                <mat-icon>notification_important</mat-icon>
+            </a>&nbsp; &nbsp;
+            <mat-icon [routerLink]="['shopping-cart/+ userCurrent.id']" routerLinkActive="active">add_shopping_cart</mat-icon>
+        </div>
+
+
+    </div>
+</div>

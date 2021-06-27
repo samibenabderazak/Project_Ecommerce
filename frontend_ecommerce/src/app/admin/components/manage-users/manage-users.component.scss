@@ -1,0 +1,15 @@
+pagination-controls {
+    ::ng-deep {
+      ul {
+        margin-top: 20px;
+        margin-left: 50%;
+        transform: translateX(-28%);
+      }
+    }
+}
+
+.text-center {
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}

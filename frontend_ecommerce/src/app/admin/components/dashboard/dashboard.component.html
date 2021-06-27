@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-12">
+    <h4 class="title">Annual Sales {{year}}</h4>
+  </div>
+  <br>
+</div>
+<div class="chart-container">
+  <div class="row pie-chart">
+    <ngx-charts-advanced-pie-chart [results]="revenues" [view]="view" [scheme]="colorScheme" 
+    [gradient]="gradient" (select)="onSelect($event)" (activate)="onActivate($event)" 
+    (deactivate)="onDeactivate($event)" class="col-6">
+    </ngx-charts-advanced-pie-chart>
+    <mat-form-field appearance="outline" class="col-4 years-select">
+      <mat-label>Choose year</mat-label>
+      <mat-select (selectionChange)="changeYear($event)" [value]="year">
+        <mat-option *ngFor="let o of years" [value]="o">
+          {{o}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row bar-vertical">
+    <ngx-charts-bar-vertical [results]="revenues" [view]="view" [scheme]="colorScheme" 
+      [schemeType]="schemeType"  [xAxis]="xAxis" [yAxis]="yAxis" 
+      [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel" [yAxisLabel]="xAxisLabel" [legendTitle]="legendTitle" 
+      [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines" 
+      [xAxisTickFormatting]="formatString" 
+      [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" 
+      [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <button class="btn btn-order-history btn-primary"
+        (click)="getHistoryOrders()"> 
+            <div>Reload</div>
+            <mat-icon>refresh</mat-icon>
+        </button>
+    </div>
+    <div class="row">
+        <table *ngIf="orders" class="table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Num</th>
+                    <th scope="col">Recipient's name</th>
+                    <th scope="col">Tel</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of orders; let i = index;">
+                    <td scope="row">{{i + 1}}</td>
+                    <td>
+                        <p class="lead">{{u.nameUser}}</p>
+                    </td>
+                    <td>
+                        <p class="lead">{{u.phoneNumber}}</p>
+                    </td>
+                    <td>
+                        <p class="lead">{{u.address}}</p>
+                    </td>
+                    <td>
+                        <p class="lead">{{u.orderDate}}</p>
+                    </td>
+                    <td>
+                        <p class="lead">{{u.totalprice | currency: "TND"}}</p>
+                    </td>
+                    <td [ngStyle]="{'background-color':
+                     u.status === 3 ? 
+                        'rgb(48, 202, 94)' : 
+                            ( u.status === 1 ? 'rgb(253, 0, 0)' : 'rgb(253, 195, 4)')}">
+                        <p class="lead">{{status[u.status]}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

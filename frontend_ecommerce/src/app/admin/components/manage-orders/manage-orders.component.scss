@@ -1,0 +1,26 @@
+
+pagination-controls {
+    ::ng-deep {
+      ul {
+        margin-top: 20px;
+        margin-left: 50%;
+        transform: translateX(-28%);
+      }
+    }
+}
+.title-manage-order {
+    margin: 10px 0 20px;
+}
+
+.btn-controls {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+mat-icon {
+  color: white;
+}
+
+.action-order {
+  display: flex;
+}
